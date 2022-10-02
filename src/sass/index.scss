@@ -1,2 +1,128 @@
-@import './common';
-@import './example';
+.search-form {
+   background-color: #0a0000;
+   height: 70px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.input {
+   height: 40px;
+   border: 0px;
+   border-top-left-radius: 3px;
+   border-bottom-left-radius: 3px;
+   padding: 10px;
+
+}
+
+.button {
+   width: 100px;
+   height: 40px;
+   border: 0px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.button:hover,
+.button:focus {
+   cursor: pointer;
+}
+
+.button__search {
+   width: 40px;
+   border-top-right-radius: 3px;
+   border-bottom-right-radius: 3px;
+}
+
+.footer {
+   display: flex;
+   justify-content: center;
+   align-content: flex-end;
+   background-color: #424242;
+}
+
+.load-more {
+   background-color: #000000;
+   border-radius: 3px;
+   padding: 5px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 40px;
+   width: 200px;
+   font-size: 20px;
+   color: #fff;
+   font-weight: bold;
+}
+
+.is-hidden {
+   display: none;
+}
+
+.gallery {
+   display: flex;
+   flex-wrap: wrap;
+   margin-left: -20px;
+   background-color: rgb(255, 255, 255);
+   padding: 40px 20px;
+   justify-content: center;
+}
+
+.gallery__link {
+   margin-top: 20px;
+   margin-left: 20px;
+   min-width: 320px;
+   flex-basis: calc((100% - 80px) / 4);
+   border: 1px solid rgb(233, 233, 233);
+   border-radius: 3px;
+   overflow: hidden;
+   transition: all 0.3s;
+}
+
+.gallery__link:hover,
+.gallery__link:focus {
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.gallery-item {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+}
+
+.gallery-item__img {
+   display: block;
+   height: 30vh;
+   object-fit: cover;
+}
+
+.info {
+   width: 100%;
+   height: 40px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+
+   color: white;
+   background-color: black;
+   border-radius: 0 0 5px 5px;
+}
+
+a {
+   text-decoration: none;
+   color: black;
+}
+
+.info-item {
+   margin: 5px;
+   border-radius: 5px;
+   padding: 5px;
+   text-align: center;
+   font-size: 14px;
+
+   @media screen and (min-width: 1200px) {
+      font-size: 14px;
+   }
+}
