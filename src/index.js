@@ -4,8 +4,8 @@ import { fetchImages } from './js/fetch-images';
 import { renderGallery } from './js/gallery-render';
 import { scroll } from './js/scroll';
 
-const form = document.querySelector('.search-form');
-const input = document.querySelector('.input');
+const formEl = document.querySelector('.search-form');
+const inputSearchEl = document.querySelector('.input');
 const loadBtn = document.querySelector('.load-more');
 const gallery = document.querySelector('.gallery');
 
@@ -13,18 +13,18 @@ let name = '';
 
 let pageNumber = 1;
 
-form.addEventListener('submit', onSubmit);
+formEl.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
+  e.preventDefault();
   pageNumber = 1;
   loadBtn.classList.add('is-hidden');
-  e.preventDefault();
-  name = input.value.trim();
+  name = inputSearchEl.value.trim();
   gallery.innerHTML = '';
 
   fetchImages(name, pageNumber)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       if (!name) {
         Notiflix.Notify.failure('There is nothing to search');
       } else if (data.hits.length === 0) {
@@ -47,7 +47,7 @@ function onLoadMore() {
   pageNumber += 1;
   fetchImages(name, pageNumber)
     .then(data => {
-      console.log(data);
+      // console.log(data);
       renderGallery(data.hits);
       countFounding(data.totalHits);
       scroll();
@@ -56,7 +56,11 @@ function onLoadMore() {
         alertEndOfSearch();
       }
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      console.log(error);
+      loadBtn.classList.add('is-hidden');
+      alertEndOfSearch();
+    });
 }
 function mistaceFunction() {
   Notiflix.Notify.failure(

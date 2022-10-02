@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-export { fetchImages };
-
 const KEY = '30265959-d9883bf0204e3a3ac8cde4b49';
 const URL = 'https://pixabay.com/api';
 
@@ -14,3 +12,5 @@ async function fetchImages(name, page) {
     .catch(error => console.log(error));
   return response;
 }
+
+export { fetchImages };

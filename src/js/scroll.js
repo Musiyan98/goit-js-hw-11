@@ -1,5 +1,3 @@
-export { scroll };
-
 function scroll() {
   const { height: cardHeight } = document
     .querySelector('.gallery')
@@ -10,3 +8,5 @@ function scroll() {
     behavior: 'smooth',
   });
 }
+
+export { scroll };

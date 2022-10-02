@@ -1,5 +1,3 @@
-export { renderGallery };
-
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
@@ -40,3 +38,5 @@ function renderGallery(images) {
     captionDelay: 250,
   });
 }
+
+export { renderGallery };
