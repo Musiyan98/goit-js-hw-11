@@ -15,27 +15,29 @@ let pageNumber = 1;
 
 formEl.addEventListener('submit', onSubmit);
 
-function onSubmit(e) {
+async function onSubmit(e) {
   e.preventDefault();
   pageNumber = 1;
   loadBtn.classList.add('is-hidden');
   name = inputSearchEl.value.trim();
   gallery.innerHTML = '';
 
-  fetchImages(name, pageNumber)
+  await fetchImages(name, pageNumber)
     .then(data => {
       // console.log(data);
       if (!name) {
         Notiflix.Notify.failure('There is nothing to search');
-      } else if (data.hits.length === 0) {
+        return;
+      }
+      if (data.hits.length === 0) {
         mistaceFunction();
-      } else {
-        renderGallery(data.hits);
-        countFounding(data.totalHits);
-        scroll();
-        if (data.hits.length >= 40) {
-          loadBtn.classList.remove('is-hidden');
-        }
+        return;
+      }
+      renderGallery(data.hits);
+      countFounding(data.totalHits);
+      scroll();
+      if (data.hits.length >= 40) {
+        loadBtn.classList.remove('is-hidden');
       }
     })
     .catch(error => console.log(error));
